@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import com.example.chipdogshowcase.databinding.FragmentDogBreedsBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +24,8 @@ class DogBreedsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var viewModel: DogBreedsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +40,7 @@ class DogBreedsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentDogBreedsBinding>(inflater, R.layout.fragment_dog_breeds, container, false)
+        viewModel = ViewModelProviders.of(this).get(DogBreedsViewModel::class.java)
         return binding.root
     }
 
