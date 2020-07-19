@@ -41,9 +41,11 @@ class DogBreedsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentDogBreedsBinding>(inflater, R.layout.fragment_dog_breeds, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_breeds, container, false)
         viewModelFactory = DogBreedsViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory).get(DogBreedsViewModel::class.java)
+        binding.dogBreedsViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
