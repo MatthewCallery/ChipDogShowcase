@@ -1,6 +1,5 @@
 package com.example.chipdogshowcase
 
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
@@ -14,8 +13,8 @@ private val retrofit = Retrofit.Builder()
 
 interface DogApiService {
     @GET("breeds/list/all")
-    fun getBreeds():
-            Call<String>
+    suspend fun getBreedsAsync():
+            String
 }
 
 object DogApi {
