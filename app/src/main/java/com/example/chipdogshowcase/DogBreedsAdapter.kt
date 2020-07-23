@@ -1,27 +1,25 @@
 package com.example.chipdogshowcase
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chipdogshowcase.databinding.DogBreedsItemViewBinding
 
 class DogBreedsAdapter : ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(DogBreedsDiffCallback()) {
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val dogBreedName: TextView = itemView.findViewById(R.id.dog_breeds_item_view_name)
-
+    class ViewHolder private constructor(val binding: DogBreedsItemViewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DogBreed) {
-            dogBreedName.text = item.breedName
+            binding.dogBreedsItemViewName.text = item.breedName
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.dog_breeds_item_view, parent, false)
-                return ViewHolder(view)
+                val binding = DogBreedsItemViewBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
     }
