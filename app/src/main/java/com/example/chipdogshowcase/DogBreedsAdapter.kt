@@ -9,10 +9,11 @@ import com.example.chipdogshowcase.databinding.DogBreedsItemViewBinding
 
 class DogBreedsAdapter : ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(DogBreedsDiffCallback()) {
 
-    class ViewHolder private constructor(val binding: DogBreedsItemViewBinding) :
+    class ViewHolder private constructor(private val binding: DogBreedsItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DogBreed) {
-            binding.dogBreedsItemViewName.text = item.breedName
+            binding.dog = item
+            binding.executePendingBindings()
         }
 
         companion object {

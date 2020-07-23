@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="dog"
             type="com.example.chipdogshowcase.DogBreed" />
@@ -16,6 +17,7 @@
             android:id="@+id/dog_breeds_item_view_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:dogBreedName="@{dog}"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
