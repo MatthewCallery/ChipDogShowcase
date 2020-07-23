@@ -3,6 +3,8 @@ package com.example.chipdogshowcase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.json.JSONArray
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 
@@ -16,7 +18,7 @@ class DogBreedsViewModel : ViewModel() {
         get() = _response
 
     init {
-        _breeds.value = listOf(DogBreed("Jack Russell"))
+        //_breeds.value = listOf(DogBreed("Jack Russell"))
         getDogBreeds()
     }
 
@@ -28,7 +30,22 @@ class DogBreedsViewModel : ViewModel() {
                 }
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    _response.value = response.body()
+                    val jsonObject = JSONObject(response.body())
+                    val messageObject = jsonObject.getJSONObject("message")
+                    val iter = messageObject.keys()
+                    val dogBreedList = arrayListOf<DogBreed>()
+                    iter.forEach {
+                        val jsonArray: JSONArray = messageObject[it] as JSONArray
+                        if (jsonArray.length() > 0) {
+                            for (i in 0 until jsonArray.length()) {
+                                dogBreedList.add(DogBreed("" + jsonArray[i] + " " + it))
+                            }
+                        } else {
+                            dogBreedList.add(DogBreed(it))
+                        }
+                    }
+                    _breeds.value = dogBreedList
+                    //_response.value = response.body()
                 }
             }
         )
