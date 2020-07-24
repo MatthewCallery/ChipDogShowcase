@@ -11,6 +11,7 @@ fun TextView.setDogBreedName(item: DogBreed) {
     text = item.breedName
 }
 
+// Take URL from an XML attribute associated with an ImageView, and use Glide to load the image
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
