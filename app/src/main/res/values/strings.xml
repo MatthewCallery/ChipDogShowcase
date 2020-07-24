@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Chip Dog Showcase</string>
+    <string name="statusImageDescription">Loading Status</string>
 </resources>

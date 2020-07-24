@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             app:dogBreedName="@{dog}"
             android:textSize="16sp"
-            android:textColor="@color/colorWhite"
             android:fontFamily="@font/roboto"
             app:layout_constraintTop_toTopOf="parent" />
 

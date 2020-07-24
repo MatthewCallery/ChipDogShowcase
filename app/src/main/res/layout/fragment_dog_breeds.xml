@@ -10,7 +10,7 @@
             type="com.example.chipdogshowcase.DogBreedsViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DogBreedsFragment">
@@ -19,7 +19,22 @@
             android:id="@+id/dog_breeds_fragment_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:listData="@{dogBreedsViewModel.breeds}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/dog_breeds_fragment_status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/statusImageDescription"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:dogApiStatus="@{dogBreedsViewModel.status}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

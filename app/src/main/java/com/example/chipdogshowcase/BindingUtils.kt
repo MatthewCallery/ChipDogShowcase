@@ -1,5 +1,6 @@
 package com.example.chipdogshowcase
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -27,5 +28,22 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         Glide.with(imgView.context)
             .load(imgUri)
             .into(imgView)
+    }
+}
+
+@BindingAdapter("dogApiStatus")
+fun bindStatus(statusImageView: ImageView, status: DogApiStatus?) {
+    when (status) {
+        DogApiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        DogApiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        DogApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
     }
 }
