@@ -1,6 +1,5 @@
 package com.example.chipdogshowcase
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,14 +10,16 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 
+enum class DogApiStatus { LOADING, ERROR, DONE }
+
 class DogBreedsViewModel : ViewModel() {
     private val _breeds = MutableLiveData<List<DogBreed>>()
     val breeds: LiveData<List<DogBreed>>
         get() = _breeds
 
-    private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
-        get() = _response
+    private val _status = MutableLiveData<DogApiStatus>()
+    val status: LiveData<DogApiStatus>
+        get() = _status
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(
@@ -32,14 +33,14 @@ class DogBreedsViewModel : ViewModel() {
     private fun getDogBreeds() {
         coroutineScope.launch {
             try {
+                _status.value = DogApiStatus.LOADING
                 val getDogBreedsDeferred = DogApi.retrofitService.getBreedsAsync()
-                _response.value = "Success: Dog breeds retrieved"
-                Log.i("Success", _response.value)
+                _status.value = DogApiStatus.DONE
                 _breeds.value = convertDogBreedsJsonString(getDogBreedsDeferred)
             } catch (e: Exception) {
                 //TODO Error Handling
-                _response.value = "Error: ${e.message}"
-                Log.i("Error", _response.value)
+                _status.value = DogApiStatus.ERROR
+                _breeds.value = ArrayList()
             }
         }
     }
