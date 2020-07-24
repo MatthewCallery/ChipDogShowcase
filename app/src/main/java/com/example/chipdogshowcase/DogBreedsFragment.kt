@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.chipdogshowcase.databinding.FragmentDogBreedsBinding
 
 class DogBreedsFragment : Fragment() {
@@ -28,7 +30,16 @@ class DogBreedsFragment : Fragment() {
 
         // RecyclerView and Adapter
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.dogBreedsFragmentList.adapter = DogBreedsAdapter()
+        binding.dogBreedsFragmentList.adapter = DogBreedsAdapter(DogBreedsAdapter.OnClickListener {
+            viewModel.displayDogBreedImages(it)
+        })
+        viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                this.findNavController().navigate(
+                    DogBreedsFragmentDirections.actionDogBreedsFragmentToDogBreedImagesFragment(it))
+                viewModel.displayDogBreedImagesComplete()
+            }
+        })
 
         return binding.root
     }

@@ -21,6 +21,10 @@ class DogBreedsViewModel : ViewModel() {
     val status: LiveData<DogApiStatus>
         get() = _status
 
+    private val _navigateToSelectedProperty = MutableLiveData<DogBreed>()
+    val navigateToSelectedProperty: LiveData<DogBreed>
+        get() = _navigateToSelectedProperty
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(
         viewModelJob + Dispatchers.Main
@@ -28,6 +32,14 @@ class DogBreedsViewModel : ViewModel() {
 
     init {
         getDogBreeds()
+    }
+
+    fun displayDogBreedImages(dogBreed: DogBreed) {
+        _navigateToSelectedProperty.value = dogBreed
+    }
+
+    fun displayDogBreedImagesComplete() {
+        _navigateToSelectedProperty.value = null
     }
 
     private fun getDogBreeds() {

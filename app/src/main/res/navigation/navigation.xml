@@ -9,5 +9,18 @@
         android:id="@+id/dogBreedsFragment"
         android:name="com.example.chipdogshowcase.DogBreedsFragment"
         android:label="DogBreedsFragment"
-        tools:layout="@layout/fragment_dog_breeds"/>
+        tools:layout="@layout/fragment_dog_breeds">
+        <action
+            android:id="@+id/action_dogBreedsFragment_to_dogBreedImagesFragment"
+            app:destination="@id/dogBreedImagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogBreedImagesFragment"
+        android:name="com.example.chipdogshowcase.DogBreedImagesFragment"
+        android:label="DogBreedImagesFragment">
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.example.chipdogshowcase.DogBreed"
+            />
+    </fragment>
 </navigation>

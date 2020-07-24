@@ -3,6 +3,7 @@ package com.example.chipdogshowcase
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 private const val BASE_URL = "https://dog.ceo/api/"
 
@@ -14,6 +15,10 @@ private val retrofit = Retrofit.Builder()
 interface DogApiService {
     @GET("breeds/list/all")
     suspend fun getBreedsAsync():
+            String
+
+    @GET("breed/{breed_name}/images/random/10")
+    suspend fun getDogImagesAsync(@Path("breed_name", encoded = true) name: String):
             String
 }
 

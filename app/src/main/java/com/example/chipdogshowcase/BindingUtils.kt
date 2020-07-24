@@ -20,6 +20,12 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<DogBreed>?) {
     adapter.submitList(data)
 }
 
+@BindingAdapter("imageListData")
+fun bindImageRecyclerView(recyclerView: RecyclerView, data: List<DogBreedImage>?) {
+    val adapter = recyclerView.adapter as DogBreedImagesAdapter
+    adapter.submitList(data)
+}
+
 // Take URL from an XML attribute associated with an ImageView, and use Glide to load the image
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {

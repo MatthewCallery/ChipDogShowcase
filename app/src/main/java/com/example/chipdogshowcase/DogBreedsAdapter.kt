@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chipdogshowcase.databinding.DogBreedsItemViewBinding
 
-class DogBreedsAdapter : ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(DogBreedsDiffCallback()) {
+class DogBreedsAdapter(private val onClickListener: OnClickListener) : ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(DogBreedsDiffCallback()) {
 
     class ViewHolder private constructor(private val binding: DogBreedsItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -27,11 +27,18 @@ class DogBreedsAdapter : ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(DogB
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(item)
+        }
         holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
+    }
+
+    class OnClickListener(val clickListener: (dogBreed: DogBreed) -> Unit) {
+        fun onClick(dogBreed: DogBreed) = clickListener(dogBreed)
     }
 }
 
