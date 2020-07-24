@@ -38,7 +38,6 @@ class DogBreedsViewModel : ViewModel() {
                 _status.value = DogApiStatus.DONE
                 _breeds.value = convertDogBreedsJsonString(getDogBreedsDeferred)
             } catch (e: Exception) {
-                //TODO Error Handling
                 _status.value = DogApiStatus.ERROR
                 _breeds.value = ArrayList()
             }
