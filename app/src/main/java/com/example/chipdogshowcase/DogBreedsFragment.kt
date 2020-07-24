@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.chipdogshowcase.databinding.FragmentDogBreedsBinding
 
@@ -14,7 +13,6 @@ class DogBreedsFragment : Fragment() {
     private lateinit var binding: FragmentDogBreedsBinding
     private lateinit var viewModel: DogBreedsViewModel
     private lateinit var viewModelFactory: DogBreedsViewModelFactory
-    private lateinit var adapter: DogBreedsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +28,7 @@ class DogBreedsFragment : Fragment() {
 
         // RecyclerView and Adapter
         binding.lifecycleOwner = viewLifecycleOwner
-        adapter = DogBreedsAdapter()
-        binding.dogBreedsFragmentList.adapter = adapter
-        viewModel.breeds.observe(viewLifecycleOwner, Observer {
-            it.let {
-                adapter.submitList(it)
-            }
-        })
+        binding.dogBreedsFragmentList.adapter = DogBreedsAdapter()
 
         return binding.root
     }

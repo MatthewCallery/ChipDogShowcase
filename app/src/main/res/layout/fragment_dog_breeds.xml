@@ -19,6 +19,7 @@
             android:id="@+id/dog_breeds_fragment_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:listData="@{dogBreedsViewModel.breeds}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </LinearLayout>
 </layout>
