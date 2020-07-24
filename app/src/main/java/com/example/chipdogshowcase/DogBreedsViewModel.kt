@@ -16,6 +16,10 @@ class DogBreedsViewModel : ViewModel() {
     val breeds: LiveData<List<DogBreed>>
         get() = _breeds
 
+    private val _response = MutableLiveData<String>()
+    val response: LiveData<String>
+        get() = _response
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(
         viewModelJob + Dispatchers.Main
@@ -29,10 +33,13 @@ class DogBreedsViewModel : ViewModel() {
         coroutineScope.launch {
             try {
                 val getDogBreedsDeferred = DogApi.retrofitService.getBreedsAsync()
+                _response.value = "Success: Dog breeds retrieved"
+                Log.i("Success", _response.value)
                 _breeds.value = convertDogBreedsJsonString(getDogBreedsDeferred)
             } catch (e: Exception) {
                 //TODO Error Handling
-                Log.i("Error", "Failure: ${e.message}")
+                _response.value = "Error: ${e.message}"
+                Log.i("Error", _response.value)
             }
         }
     }
