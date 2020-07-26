@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#64FFDA</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorText">#000000</color>
+    <color name="colorDivider">#EEEEEE</color>
 </resources>
