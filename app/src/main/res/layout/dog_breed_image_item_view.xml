@@ -19,23 +19,23 @@
             android:id="@+id/dog_breed_image_item_view_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
             android:fontFamily="@font/roboto"
-            android:textSize="16sp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/dog_breed_image_item_view_image"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimary"
             android:contentDescription="@string/dogBreedImageViewDescription"
             app:imageUrl="@{dog.imageURL}"
-            android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dog_breed_image_item_view_textview" />
