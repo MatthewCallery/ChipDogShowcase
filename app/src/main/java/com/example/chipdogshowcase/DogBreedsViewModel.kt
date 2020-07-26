@@ -7,8 +7,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.json.JSONArray
-import org.json.JSONObject
 
 class DogBreedsViewModel : ViewModel() {
     private val _breeds = MutableLiveData<List<DogBreed>>()
@@ -46,30 +44,12 @@ class DogBreedsViewModel : ViewModel() {
                 _status.value = DogApiStatus.LOADING
                 val getDogBreedsDeferred = DogApi.retrofitService.getBreedsAsync()
                 _status.value = DogApiStatus.DONE
-                _breeds.value = convertDogBreedsJsonString(getDogBreedsDeferred)
+                _breeds.value = getDogBreedsDeferred.asDogBreedList()
             } catch (e: Exception) {
                 _status.value = DogApiStatus.ERROR
                 _breeds.value = ArrayList()
             }
         }
-    }
-
-    private fun convertDogBreedsJsonString(jsonString: String): ArrayList<DogBreed> {
-        val jsonObject = JSONObject(jsonString)
-        val messageObject = jsonObject.getJSONObject("message")
-        val dogBreedList = arrayListOf<DogBreed>()
-
-        messageObject.keys().forEach {
-            val subBreedArray: JSONArray = messageObject[it] as JSONArray
-            if (subBreedArray.length() > 0) {
-                for (i in 0 until subBreedArray.length()) {
-                    dogBreedList.add(DogBreed("${(subBreedArray[i] as String).capitaliseWords()} ${it.capitaliseWords()}"))
-                }
-            } else {
-                dogBreedList.add(DogBreed(it.capitaliseWords()))
-            }
-        }
-        return dogBreedList
     }
 
     override fun onCleared() {
