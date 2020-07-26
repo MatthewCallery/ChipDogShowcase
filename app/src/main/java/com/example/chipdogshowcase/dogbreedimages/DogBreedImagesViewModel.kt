@@ -1,8 +1,12 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.dogbreedimages
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.chipdogshowcase.DogApi
+import com.example.chipdogshowcase.DogApiStatus
+import com.example.chipdogshowcase.DogBreed
+import com.example.chipdogshowcase.addImageUrlList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

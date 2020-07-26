@@ -1,4 +1,4 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.dogbreedimages
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chipdogshowcase.databinding.DogBreedImageItemViewBinding
 
 class DogBreedImagesAdapter :
-    ListAdapter<String, DogBreedImagesAdapter.ViewHolder>(DogBreedImagesDiffCallback()) {
+    ListAdapter<String, DogBreedImagesAdapter.ViewHolder>(
+        DogBreedImagesDiffCallback()
+    ) {
 
     class ViewHolder private constructor(private val binding: DogBreedImageItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -23,7 +25,9 @@ class DogBreedImagesAdapter :
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = DogBreedImageItemViewBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
     }
@@ -34,7 +38,9 @@ class DogBreedImagesAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 }
 

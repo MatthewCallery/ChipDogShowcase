@@ -7,7 +7,7 @@
 
         <variable
             name="dogBreedImagesViewModel"
-            type="com.example.chipdogshowcase.DogBreedImagesViewModel" />
+            type="com.example.chipdogshowcase.dogbreedimages.DogBreedImagesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        tools:context=".DogBreedImagesFragment">
+        tools:context=".dogbreedimages.DogBreedImagesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dog_breed_images_fragment_list"
