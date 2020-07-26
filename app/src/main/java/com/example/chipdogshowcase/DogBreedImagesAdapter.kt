@@ -12,8 +12,10 @@ class DogBreedImagesAdapter :
 
     class ViewHolder private constructor(private val binding: DogBreedImageItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: DogBreedImage) {
+        fun bind(item: DogBreedImage, position: Int) {
             binding.dog = item
+            val imageTitle = "Pup photo ${position + 1}"
+            binding.dogBreedImageItemViewTextview.text = imageTitle
             binding.executePendingBindings()
         }
 
@@ -28,7 +30,7 @@ class DogBreedImagesAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
