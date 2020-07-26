@@ -7,7 +7,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 
 class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
     private val _images = MutableLiveData<List<DogBreedImage>>()
@@ -41,23 +40,12 @@ class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
                 _status.value = DogApiStatus.LOADING
                 val getDogImagesDeferred = DogApi.retrofitService.getDogImagesAsync(breed)
                 _status.value = DogApiStatus.DONE
-                _images.value = convertDogBreedImagesJsonString(getDogImagesDeferred)
+                _images.value = getDogImagesDeferred.asDogBreedImageUrlList()
             } catch (e: Exception) {
                 _status.value = DogApiStatus.ERROR
                 _images.value = ArrayList()
             }
         }
-    }
-
-    private fun convertDogBreedImagesJsonString(jsonString: String): ArrayList<DogBreedImage> {
-        val jsonObject = JSONObject(jsonString)
-        val messageArray = jsonObject.getJSONArray("message")
-        val imageList = arrayListOf<DogBreedImage>()
-
-        for (i in 0 until messageArray.length()) {
-            imageList.add(DogBreedImage(messageArray[i] as String))
-        }
-        return imageList
     }
 
     override fun onCleared() {
