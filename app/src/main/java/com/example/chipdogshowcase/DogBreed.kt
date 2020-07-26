@@ -10,9 +10,11 @@ data class DogBreed(val breedName: String = "", val imageUrls: ArrayList<String>
 
 // Convert network result to DogBreed objects
 fun String.asDogBreedList() : ArrayList<DogBreed> {
-    val messageObject = JSONObject(this).getJSONObject("message")
     val dogBreedList = arrayListOf<DogBreed>()
 
+    if (this.isEmpty()) { return dogBreedList }
+
+    val messageObject = JSONObject(this).getJSONObject("message")
     // messageObject keys are dog breed names
     messageObject.keys().forEach {
         val subBreedArray: JSONArray = messageObject[it] as JSONArray

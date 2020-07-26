@@ -3,19 +3,16 @@ package com.example.chipdogshowcase.dogbreeds
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chipdogshowcase.network.DogApi
 import com.example.chipdogshowcase.network.DogApiStatus
 import com.example.chipdogshowcase.DogBreed
-import com.example.chipdogshowcase.asDogBreedList
+import com.example.chipdogshowcase.Repository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class DogBreedsViewModel : ViewModel() {
-    private val _breeds = MutableLiveData<List<DogBreed>>()
-    val breeds: LiveData<List<DogBreed>>
-        get() = _breeds
+class DogBreedsViewModel(private val repository: Repository) : ViewModel() {
+    val breeds: LiveData<List<DogBreed>> = repository.dogBreeds
 
     private val _status = MutableLiveData<DogApiStatus>()
     val status: LiveData<DogApiStatus>
@@ -31,7 +28,7 @@ class DogBreedsViewModel : ViewModel() {
     )
 
     init {
-        getDogBreeds()
+        refreshDogBreedDataFromRepository()
     }
 
     fun displayDogBreedImages(dogBreed: DogBreed) {
@@ -42,16 +39,18 @@ class DogBreedsViewModel : ViewModel() {
         _navigateToSelectedProperty.value = null
     }
 
-    private fun getDogBreeds() {
+    private fun refreshDogBreedDataFromRepository() {
         coroutineScope.launch {
             try {
-                _status.value = DogApiStatus.LOADING
-                val getDogBreedsDeferred = DogApi.retrofitService.getBreedsAsync()
+                if (breeds.value.isNullOrEmpty()) {
+                    _status.value = DogApiStatus.LOADING
+                }
+                repository.refreshDogBreeds()
                 _status.value = DogApiStatus.DONE
-                _breeds.value = getDogBreedsDeferred.asDogBreedList()
             } catch (e: Exception) {
-                _status.value = DogApiStatus.ERROR
-                _breeds.value = ArrayList()
+                if (breeds.value.isNullOrEmpty()) {
+                    _status.value = DogApiStatus.ERROR
+                }
             }
         }
     }

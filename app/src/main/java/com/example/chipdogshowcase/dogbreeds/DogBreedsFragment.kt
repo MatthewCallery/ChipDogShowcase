@@ -1,5 +1,6 @@
 package com.example.chipdogshowcase.dogbreeds
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,8 +31,9 @@ class DogBreedsFragment : Fragment() {
         )
 
         // ViewModel
+        val repository = Repository(SavedPreferencesService(this.context as Context))
         viewModelFactory =
-            DogBreedsViewModelFactory()
+            DogBreedsViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DogBreedsViewModel::class.java)
         binding.dogBreedsViewModel = viewModel
 
