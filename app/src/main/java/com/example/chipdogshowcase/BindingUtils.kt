@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.chipdogshowcase.dogbreedimages.DogBreedImagesAdapter
 import com.example.chipdogshowcase.dogbreeds.DogBreedsAdapter
+import com.example.chipdogshowcase.network.DogApiStatus
 
 @BindingAdapter("dogBreedName")
 fun TextView.setDogBreedName(item: DogBreed) {

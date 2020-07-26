@@ -1,4 +1,4 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
