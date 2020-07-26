@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 private const val BASE_URL = "https://dog.ceo/api/"
 
-private val retrofit = Retrofit.Builder()
+val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()

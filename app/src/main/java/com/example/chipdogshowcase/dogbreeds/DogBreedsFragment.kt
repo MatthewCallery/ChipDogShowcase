@@ -31,9 +31,8 @@ class DogBreedsFragment : Fragment() {
         )
 
         // ViewModel
-        val repository = Repository(SavedPreferencesService(this.context as Context))
         viewModelFactory =
-            DogBreedsViewModelFactory(repository)
+            DogBreedsViewModelFactory(DI.repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DogBreedsViewModel::class.java)
         binding.dogBreedsViewModel = viewModel
 
