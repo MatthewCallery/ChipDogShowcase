@@ -28,7 +28,10 @@ class DogBreedImagesFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(DogBreedImagesViewModel::class.java)
         binding.dogBreedImagesViewModel = viewModel
 
-        // RecyclerView and Adapter
+        // Set app bar title
+        (requireActivity() as MainActivity).title = dogBreed.breedName
+
+                // RecyclerView and Adapter
         binding.lifecycleOwner = viewLifecycleOwner
         binding.dogBreedImagesFragmentList.adapter = DogBreedImagesAdapter()
 

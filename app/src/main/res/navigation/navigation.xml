@@ -15,8 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/dogBreedImagesFragment"
-        android:name="com.example.chipdogshowcase.DogBreedImagesFragment"
-        android:label="DogBreedImagesFragment">
+        android:name="com.example.chipdogshowcase.DogBreedImagesFragment">
         <argument
             android:name="selectedProperty"
             app:argType="com.example.chipdogshowcase.DogBreed"
