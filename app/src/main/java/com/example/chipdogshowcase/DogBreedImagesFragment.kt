@@ -18,20 +18,22 @@ class DogBreedImagesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_breed_images, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_dog_breed_images, container, false)
 
         //TODO handle error
         val dogBreed = DogBreedImagesFragmentArgs.fromBundle(requireArguments()).selectedProperty
+
         // ViewModel
         viewModelFactory = DogBreedImagesViewModelFactory(dogBreed)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(DogBreedImagesViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, viewModelFactory).get(DogBreedImagesViewModel::class.java)
         binding.dogBreedImagesViewModel = viewModel
 
         // Set app bar title
         (requireActivity() as MainActivity).title = dogBreed.breedName
 
-                // RecyclerView and Adapter
+        // RecyclerView and Adapter
         binding.lifecycleOwner = viewLifecycleOwner
         binding.dogBreedImagesFragmentList.adapter = DogBreedImagesAdapter()
 

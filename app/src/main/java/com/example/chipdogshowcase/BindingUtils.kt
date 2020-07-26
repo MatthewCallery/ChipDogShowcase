@@ -15,13 +15,14 @@ fun TextView.setDogBreedName(item: DogBreed) {
 
 // Init DogBreedsAdapter with list of DogBreed objects
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<DogBreed>?) {
+fun bindDogBreedRecyclerView(recyclerView: RecyclerView, data: List<DogBreed>?) {
     val adapter = recyclerView.adapter as DogBreedsAdapter
     adapter.submitList(data)
 }
 
+// Init DogBreedImagesAdapter with list of DogBreedImage objects
 @BindingAdapter("imageListData")
-fun bindImageRecyclerView(recyclerView: RecyclerView, data: List<DogBreedImage>?) {
+fun bindDogBreedImageRecyclerView(recyclerView: RecyclerView, data: List<DogBreedImage>?) {
     val adapter = recyclerView.adapter as DogBreedImagesAdapter
     adapter.submitList(data)
 }

@@ -1,6 +1,5 @@
 package com.example.chipdogshowcase
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 import org.json.JSONObject
 
 class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
@@ -26,7 +24,6 @@ class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
     )
 
     init {
-        Log.i("BreedName", breed.breedName)
         val nameArray = breed.breedName.split(" ")
         var cleanedBreedString = ""
         if (nameArray.size == 1) {
@@ -42,14 +39,12 @@ class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
         coroutineScope.launch {
             try {
                 _status.value = DogApiStatus.LOADING
-                Log.i("url", "breed/${breed}/images")
                 val getDogImagesDeferred = DogApi.retrofitService.getDogImagesAsync(breed)
                 _status.value = DogApiStatus.DONE
                 _images.value = convertDogBreedImagesJsonString(getDogImagesDeferred)
             } catch (e: Exception) {
                 _status.value = DogApiStatus.ERROR
                 _images.value = ArrayList()
-                Log.i("Error", "${e.message}")
             }
         }
     }

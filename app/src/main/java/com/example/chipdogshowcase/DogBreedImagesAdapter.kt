@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chipdogshowcase.databinding.DogBreedImageItemViewBinding
 
-class DogBreedImagesAdapter : ListAdapter<DogBreedImage, DogBreedImagesAdapter.ViewHolder>(DogBreedImagesDiffCallback()) {
+class DogBreedImagesAdapter :
+    ListAdapter<DogBreedImage, DogBreedImagesAdapter.ViewHolder>(DogBreedImagesDiffCallback()) {
 
     class ViewHolder private constructor(private val binding: DogBreedImageItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {

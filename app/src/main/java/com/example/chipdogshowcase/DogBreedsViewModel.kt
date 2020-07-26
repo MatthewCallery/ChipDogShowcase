@@ -10,8 +10,6 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 
-enum class DogApiStatus { LOADING, ERROR, DONE }
-
 class DogBreedsViewModel : ViewModel() {
     private val _breeds = MutableLiveData<List<DogBreed>>()
     val breeds: LiveData<List<DogBreed>>
