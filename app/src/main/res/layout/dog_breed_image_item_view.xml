@@ -30,11 +30,10 @@
         <ImageView
             android:id="@+id/dog_breed_image_item_view_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimary"
             android:contentDescription="@string/dogBreedImageViewDescription"
-            android:maxHeight="300dp"
             app:imageUrl="@{dog.imageURL}"
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
