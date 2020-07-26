@@ -22,6 +22,8 @@ class DogBreedsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_breeds, container, false)
+        // Set app bar title
+        (requireActivity() as MainActivity).title = getString(R.string.titleDogBreedsFragment)
 
         // ViewModel
         viewModelFactory = DogBreedsViewModelFactory()
@@ -33,6 +35,8 @@ class DogBreedsFragment : Fragment() {
         binding.dogBreedsFragmentList.adapter = DogBreedsAdapter(DogBreedsAdapter.OnClickListener {
             viewModel.displayDogBreedImages(it)
         })
+
+        // Navigation
         viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
             if ( null != it ) {
                 this.findNavController().navigate(
