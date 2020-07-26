@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chipdogshowcase.databinding.DogBreedImageItemViewBinding
 
 class DogBreedImagesAdapter :
-    ListAdapter<DogBreedImage, DogBreedImagesAdapter.ViewHolder>(DogBreedImagesDiffCallback()) {
+    ListAdapter<String, DogBreedImagesAdapter.ViewHolder>(DogBreedImagesDiffCallback()) {
 
     class ViewHolder private constructor(private val binding: DogBreedImageItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: DogBreedImage, position: Int) {
+        fun bind(item: String, position: Int) {
             binding.dog = item
             val imageTitle = "Pup photo ${position + 1}"
             binding.dogBreedImageItemViewTextview.text = imageTitle
@@ -38,12 +38,12 @@ class DogBreedImagesAdapter :
     }
 }
 
-class DogBreedImagesDiffCallback : DiffUtil.ItemCallback<DogBreedImage>() {
-    override fun areItemsTheSame(oldItem: DogBreedImage, newItem: DogBreedImage): Boolean {
-        return oldItem.imageURL == newItem.imageURL
+class DogBreedImagesDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: DogBreedImage, newItem: DogBreedImage): Boolean {
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 }

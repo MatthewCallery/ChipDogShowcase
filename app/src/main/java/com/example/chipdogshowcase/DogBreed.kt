@@ -6,7 +6,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 @Parcelize
-data class DogBreed(val breedName: String = "") : Parcelable
+data class DogBreed(val breedName: String = "", val imageUrls: ArrayList<String> = arrayListOf()) : Parcelable
 
 // Convert network result to DogBreed objects
 fun String.asDogBreedList() : ArrayList<DogBreed> {
@@ -26,4 +26,15 @@ fun String.asDogBreedList() : ArrayList<DogBreed> {
         }
     }
     return dogBreedList
+}
+
+fun DogBreed.addImageUrlList(list: String) {
+    val messageArray = JSONObject(list).getJSONArray("message")
+    val imageList = arrayListOf<String>()
+
+    for (i in 0 until messageArray.length()) {
+        imageList.add(messageArray[i] as String)
+    }
+    this.imageUrls.clear()
+    this.imageUrls.addAll(imageList)
 }

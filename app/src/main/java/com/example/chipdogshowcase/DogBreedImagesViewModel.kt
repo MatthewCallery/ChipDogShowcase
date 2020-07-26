@@ -8,9 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
-    private val _images = MutableLiveData<List<DogBreedImage>>()
-    val images: LiveData<List<DogBreedImage>>
+class DogBreedImagesViewModel(private var breed: DogBreed) : ViewModel() {
+    private val _images = MutableLiveData<List<String>>()
+    val images: LiveData<List<String>>
         get() = _images
 
     private val _status = MutableLiveData<DogApiStatus>()
@@ -23,29 +23,34 @@ class DogBreedImagesViewModel(breed: DogBreed) : ViewModel() {
     )
 
     init {
-        val nameArray = breed.breedName.split(" ")
-        var cleanedBreedString = ""
-        if (nameArray.size == 1) {
-            cleanedBreedString = nameArray[0].toLowerCase()
-        } else if (nameArray.size == 2) {
-            cleanedBreedString = "${nameArray[1].toLowerCase()}/${nameArray[0].toLowerCase()}"
-        }
-
-        getDogImages(cleanedBreedString)
+        getDogImages()
     }
 
-    private fun getDogImages(breed: String) {
+    private fun getDogImages() {
         coroutineScope.launch {
             try {
                 _status.value = DogApiStatus.LOADING
-                val getDogImagesDeferred = DogApi.retrofitService.getDogImagesAsync(breed)
+                val cleanedBreedName = cleanBreedName(breed.breedName)
+                val getDogImagesDeferred = DogApi.retrofitService.getDogImagesAsync(cleanedBreedName)
                 _status.value = DogApiStatus.DONE
-                _images.value = getDogImagesDeferred.asDogBreedImageUrlList()
+                breed.addImageUrlList(getDogImagesDeferred)
+                _images.value = breed.imageUrls
             } catch (e: Exception) {
                 _status.value = DogApiStatus.ERROR
                 _images.value = ArrayList()
             }
         }
+    }
+
+    private fun cleanBreedName(breedName: String) : String {
+        val nameArray = breedName.split(" ")
+        var cleanedBreedName = ""
+        if (nameArray.size == 1) {
+            cleanedBreedName = nameArray[0].toLowerCase()
+        } else if (nameArray.size == 2) {
+            cleanedBreedName = "${nameArray[1].toLowerCase()}/${nameArray[0].toLowerCase()}"
+        }
+        return cleanedBreedName
     }
 
     override fun onCleared() {

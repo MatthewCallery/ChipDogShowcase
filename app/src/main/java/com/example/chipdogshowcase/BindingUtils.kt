@@ -21,9 +21,9 @@ fun bindDogBreedRecyclerView(recyclerView: RecyclerView, data: List<DogBreed>?) 
     adapter.submitList(data)
 }
 
-// Init DogBreedImagesAdapter with list of DogBreedImage objects
+// Init DogBreedImagesAdapter with list of image URL strings
 @BindingAdapter("imageListData")
-fun bindDogBreedImageRecyclerView(recyclerView: RecyclerView, data: List<DogBreedImage>?) {
+fun bindDogBreedImageRecyclerView(recyclerView: RecyclerView, data: List<String>?) {
     val adapter = recyclerView.adapter as DogBreedImagesAdapter
     adapter.submitList(data)
 }
