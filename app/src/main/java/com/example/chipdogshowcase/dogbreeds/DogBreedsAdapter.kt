@@ -1,14 +1,17 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.dogbreeds
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chipdogshowcase.DogBreed
 import com.example.chipdogshowcase.databinding.DogBreedsItemViewBinding
 
 class DogBreedsAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(DogBreedsDiffCallback()) {
+    ListAdapter<DogBreed, DogBreedsAdapter.ViewHolder>(
+        DogBreedsDiffCallback()
+    ) {
 
     class ViewHolder private constructor(private val binding: DogBreedsItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -21,7 +24,9 @@ class DogBreedsAdapter(private val onClickListener: OnClickListener) :
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = DogBreedsItemViewBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
     }
@@ -35,7 +40,9 @@ class DogBreedsAdapter(private val onClickListener: OnClickListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 
     class OnClickListener(val clickListener: (dogBreed: DogBreed) -> Unit) {

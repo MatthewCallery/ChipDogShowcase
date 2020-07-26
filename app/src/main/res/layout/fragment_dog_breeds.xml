@@ -7,13 +7,13 @@
 
         <variable
             name="dogBreedsViewModel"
-            type="com.example.chipdogshowcase.DogBreedsViewModel" />
+            type="com.example.chipdogshowcase.dogbreeds.DogBreedsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DogBreedsFragment">
+        tools:context=".dogbreeds.DogBreedsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dog_breeds_fragment_list"

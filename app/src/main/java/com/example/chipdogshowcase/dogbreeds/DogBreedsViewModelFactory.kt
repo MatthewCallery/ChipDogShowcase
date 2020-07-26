@@ -1,4 +1,4 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.dogbreeds
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
