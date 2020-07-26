@@ -7,6 +7,7 @@ import com.example.chipdogshowcase.network.DogApi
 import com.example.chipdogshowcase.network.DogApiStatus
 import com.example.chipdogshowcase.DogBreed
 import com.example.chipdogshowcase.addImageUrlList
+import com.example.chipdogshowcase.asDogImageUrlList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -37,7 +38,7 @@ class DogBreedImagesViewModel(private var breed: DogBreed) : ViewModel() {
                 val cleanedBreedName = cleanBreedName(breed.breedName)
                 val getDogImagesDeferred = DogApi.retrofitService.getDogImagesAsync(cleanedBreedName)
                 _status.value = DogApiStatus.DONE
-                breed.addImageUrlList(getDogImagesDeferred)
+                breed.addImageUrlList(getDogImagesDeferred.asDogImageUrlList())
                 _images.value = breed.imageUrls
             } catch (e: Exception) {
                 _status.value = DogApiStatus.ERROR

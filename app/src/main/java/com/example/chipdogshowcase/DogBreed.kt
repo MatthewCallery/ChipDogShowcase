@@ -28,13 +28,19 @@ fun String.asDogBreedList() : ArrayList<DogBreed> {
     return dogBreedList
 }
 
-fun DogBreed.addImageUrlList(list: String) {
-    val messageArray = JSONObject(list).getJSONArray("message")
+// Convert network result to list of image URL strings
+fun String.asDogImageUrlList() : ArrayList<String> {
+    val messageArray = JSONObject(this).getJSONArray("message")
     val imageList = arrayListOf<String>()
 
     for (i in 0 until messageArray.length()) {
         imageList.add(messageArray[i] as String)
     }
+    return imageList
+}
+
+// Add list of image URLs to DogBreed object
+fun DogBreed.addImageUrlList(imageList: ArrayList<String>) {
     this.imageUrls.clear()
     this.imageUrls.addAll(imageList)
 }
