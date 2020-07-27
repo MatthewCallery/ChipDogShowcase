@@ -18,4 +18,21 @@ class Repository(private val sharedPrefService: SavedPreferencesService, private
             sharedPrefService.saveDogBreedList(dogBreeds)
         }
     }
+
+    suspend fun getDogImages(dogBreed: DogBreed) : ArrayList<String> {
+        val cleanedBreedName = cleanBreedName(dogBreed.breedName)
+        val dogImages = dogApiService.getDogImagesAsync(cleanedBreedName)
+        return dogImages.asDogImageUrlList()
+    }
+
+    private fun cleanBreedName(breedName: String) : String {
+        val nameArray = breedName.split(" ")
+        var cleanedBreedName = ""
+        if (nameArray.size == 1) {
+            cleanedBreedName = nameArray[0].toLowerCase()
+        } else if (nameArray.size == 2) {
+            cleanedBreedName = "${nameArray[1].toLowerCase()}/${nameArray[0].toLowerCase()}"
+        }
+        return cleanedBreedName
+    }
 }

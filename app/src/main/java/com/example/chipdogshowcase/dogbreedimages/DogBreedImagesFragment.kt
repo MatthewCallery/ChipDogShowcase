@@ -31,7 +31,7 @@ class DogBreedImagesFragment : Fragment() {
         // ViewModel
         viewModelFactory =
             DogBreedImagesViewModelFactory(
-                dogBreed
+                dogBreed, DI.repository
             )
         viewModel =
             ViewModelProvider(this, viewModelFactory).get(DogBreedImagesViewModel::class.java)
