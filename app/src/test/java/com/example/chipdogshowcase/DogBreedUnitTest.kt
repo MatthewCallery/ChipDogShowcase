@@ -21,7 +21,7 @@ class DogBreedUnitTest {
     @Test
     fun testAddImageUrls() {
         // given
-        val imageUrls = arrayListOf<String>(
+        val imageUrls = arrayListOf(
             "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg",
             "https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg"
         )
