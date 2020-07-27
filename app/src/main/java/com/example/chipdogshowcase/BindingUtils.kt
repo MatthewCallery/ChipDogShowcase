@@ -44,6 +44,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+// Set loading and error images depending on DogApiStatus
 @BindingAdapter("dogApiStatus")
 fun bindStatus(statusImageView: ImageView, status: DogApiStatus?) {
     when (status) {
