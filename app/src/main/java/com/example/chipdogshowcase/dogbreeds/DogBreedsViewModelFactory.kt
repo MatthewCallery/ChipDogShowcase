@@ -2,7 +2,7 @@ package com.example.chipdogshowcase.dogbreeds
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.chipdogshowcase.Repository
+import com.example.chipdogshowcase.repository.Repository
 import java.lang.IllegalArgumentException
 
 class DogBreedsViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {

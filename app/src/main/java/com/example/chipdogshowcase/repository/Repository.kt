@@ -1,4 +1,4 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.repository
 
 import androidx.lifecycle.LiveData
 import com.example.chipdogshowcase.models.DogBreed
