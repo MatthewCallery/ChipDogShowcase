@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.chipdogshowcase.network.DogApiStatus
-import com.example.chipdogshowcase.DogBreed
+import com.example.chipdogshowcase.models.DogBreed
 import com.example.chipdogshowcase.Repository
-import com.example.chipdogshowcase.addImageUrlList
+import com.example.chipdogshowcase.models.addImageUrlList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

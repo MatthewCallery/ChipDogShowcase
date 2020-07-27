@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.chipdogshowcase.DogBreed
+import com.example.chipdogshowcase.models.DogBreed
 import com.example.chipdogshowcase.R
 import com.example.chipdogshowcase.dogimages.DogImagesAdapter
 import com.example.chipdogshowcase.dogbreeds.DogBreedsAdapter

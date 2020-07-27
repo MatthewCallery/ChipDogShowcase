@@ -1,4 +1,4 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

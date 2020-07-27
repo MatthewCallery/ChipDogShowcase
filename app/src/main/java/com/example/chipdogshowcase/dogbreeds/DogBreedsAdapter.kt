@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chipdogshowcase.DogBreed
+import com.example.chipdogshowcase.models.DogBreed
 import com.example.chipdogshowcase.databinding.DogBreedsItemViewBinding
 
 class DogBreedsAdapter(private val onClickListener: OnClickListener) :

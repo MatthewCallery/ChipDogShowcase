@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.chipdogshowcase.*
 import com.example.chipdogshowcase.databinding.FragmentDogImagesBinding
+import com.example.chipdogshowcase.models.DogBreed
 import com.example.chipdogshowcase.utilities.setMainActivityTitle
 
 class DogImagesFragment : Fragment() {

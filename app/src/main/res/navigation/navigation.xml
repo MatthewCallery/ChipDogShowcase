@@ -18,6 +18,6 @@
         android:name="com.example.chipdogshowcase.dogimages.DogImagesFragment">
         <argument
             android:name="selectedProperty"
-            app:argType="com.example.chipdogshowcase.DogBreed" />
+            app:argType="com.example.chipdogshowcase.models.DogBreed" />
     </fragment>
 </navigation>

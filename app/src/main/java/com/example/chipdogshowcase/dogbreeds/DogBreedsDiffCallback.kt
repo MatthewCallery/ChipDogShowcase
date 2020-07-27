@@ -1,7 +1,7 @@
 package com.example.chipdogshowcase.dogbreeds
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.chipdogshowcase.DogBreed
+import com.example.chipdogshowcase.models.DogBreed
 
 class DogBreedsDiffCallback : DiffUtil.ItemCallback<DogBreed>() {
     override fun areItemsTheSame(oldItem: DogBreed, newItem: DogBreed): Boolean {

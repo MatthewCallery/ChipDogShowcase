@@ -3,6 +3,8 @@ package com.example.chipdogshowcase
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
+import com.example.chipdogshowcase.models.DogBreed
+import com.example.chipdogshowcase.models.asDogBreedList
 
 class SavedPreferencesService(private val context: Context) : LiveData<List<DogBreed>>() {
     private lateinit var sharedPreferences: SharedPreferences
