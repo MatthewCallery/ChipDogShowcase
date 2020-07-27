@@ -24,9 +24,7 @@ class DogBreedsAdapter(private val onClickListener: OnClickListener) :
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = DogBreedsItemViewBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(
-                    binding
-                )
+                return ViewHolder(binding)
             }
         }
     }
@@ -40,9 +38,7 @@ class DogBreedsAdapter(private val onClickListener: OnClickListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(
-            parent
-        )
+        return ViewHolder.from(parent)
     }
 
     class OnClickListener(val clickListener: (dogBreed: DogBreed) -> Unit) {

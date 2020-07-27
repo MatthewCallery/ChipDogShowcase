@@ -22,9 +22,7 @@ class DogImagesAdapter : ListAdapter<String, DogImagesAdapter.ViewHolder>(DogIma
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = DogImageItemViewBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(
-                    binding
-                )
+                return ViewHolder(binding)
             }
         }
     }
@@ -35,9 +33,7 @@ class DogImagesAdapter : ListAdapter<String, DogImagesAdapter.ViewHolder>(DogIma
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(
-            parent
-        )
+        return ViewHolder.from(parent)
     }
 }
 
