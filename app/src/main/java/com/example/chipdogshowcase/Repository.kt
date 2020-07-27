@@ -4,10 +4,11 @@ import androidx.lifecycle.LiveData
 import com.example.chipdogshowcase.models.DogBreed
 import com.example.chipdogshowcase.models.asDogImageUrlList
 import com.example.chipdogshowcase.network.DogApiService
+import com.example.chipdogshowcase.sharedpref.SharedPreferencesService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class Repository(private val sharedPrefService: SavedPreferencesService, private val dogApiService: DogApiService) {
+class Repository(private val sharedPrefService: SharedPreferencesService, private val dogApiService: DogApiService) {
     val dogBreeds : LiveData<List<DogBreed>> = sharedPrefService
 
     suspend fun refreshDogBreeds() {

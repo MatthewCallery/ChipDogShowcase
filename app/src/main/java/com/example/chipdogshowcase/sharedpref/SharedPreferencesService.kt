@@ -1,12 +1,13 @@
-package com.example.chipdogshowcase
+package com.example.chipdogshowcase.sharedpref
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
+import com.example.chipdogshowcase.R
 import com.example.chipdogshowcase.models.DogBreed
 import com.example.chipdogshowcase.models.asDogBreedList
 
-class SavedPreferencesService(private val context: Context) : LiveData<List<DogBreed>>() {
+class SharedPreferencesService(private val context: Context) : LiveData<List<DogBreed>>() {
     private lateinit var sharedPreferences: SharedPreferences
 
     private val preferenceChangeListener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
