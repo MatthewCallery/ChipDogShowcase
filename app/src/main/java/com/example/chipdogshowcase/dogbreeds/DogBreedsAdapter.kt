@@ -16,7 +16,7 @@ class DogBreedsAdapter(private val onClickListener: OnClickListener) :
     class ViewHolder private constructor(private val binding: DogBreedsItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DogBreed) {
-            binding.dog = item
+            binding.dogBreed = item
             binding.executePendingBindings()
         }
 
