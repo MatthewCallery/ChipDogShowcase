@@ -2,7 +2,6 @@ package com.example.chipdogshowcase.dogimages
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chipdogshowcase.databinding.DogImageItemViewBinding
@@ -34,15 +33,5 @@ class DogImagesAdapter : ListAdapter<String, DogImagesAdapter.ViewHolder>(DogIma
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
-    }
-}
-
-class DogImagesDiffCallback : DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
-    }
-
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
     }
 }

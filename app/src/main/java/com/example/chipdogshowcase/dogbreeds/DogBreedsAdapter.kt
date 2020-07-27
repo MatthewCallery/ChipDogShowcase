@@ -2,7 +2,6 @@ package com.example.chipdogshowcase.dogbreeds
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chipdogshowcase.DogBreed
@@ -43,15 +42,5 @@ class DogBreedsAdapter(private val onClickListener: OnClickListener) :
 
     class OnClickListener(val clickListener: (dogBreed: DogBreed) -> Unit) {
         fun onClick(dogBreed: DogBreed) = clickListener(dogBreed)
-    }
-}
-
-class DogBreedsDiffCallback : DiffUtil.ItemCallback<DogBreed>() {
-    override fun areItemsTheSame(oldItem: DogBreed, newItem: DogBreed): Boolean {
-        return oldItem.breedName == newItem.breedName
-    }
-
-    override fun areContentsTheSame(oldItem: DogBreed, newItem: DogBreed): Boolean {
-        return oldItem == newItem
     }
 }
