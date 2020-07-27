@@ -3,7 +3,7 @@ package com.example.chipdogshowcase
 import android.app.Application
 import android.content.Context
 
-class MyApplication : Application() {
+class FetchApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
