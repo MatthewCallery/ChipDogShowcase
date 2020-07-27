@@ -14,37 +14,31 @@ class DogImagesFragment : Fragment() {
     private lateinit var binding: FragmentDogImagesBinding
     private lateinit var viewModel: DogImagesViewModel
     private lateinit var viewModelFactory: DogImagesViewModelFactory
+    private lateinit var dogBreed: DogBreed
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater,
-                R.layout.fragment_dog_images, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_images, container, false)
 
         //TODO handle error
-        val dogBreed = DogImagesFragmentArgs.fromBundle(
-            requireArguments()
-        ).selectedProperty
+        dogBreed = DogImagesFragmentArgs.fromBundle(requireArguments()).selectedProperty
 
-        // ViewModel
-        viewModelFactory =
-            DogImagesViewModelFactory(
-                dogBreed, DI.repository
-            )
-        viewModel =
-            ViewModelProvider(this, viewModelFactory).get(DogImagesViewModel::class.java)
-        binding.dogImagesViewModel = viewModel
-
-        // Set app bar title
-        (requireActivity() as MainActivity).title = dogBreed.breedName
-
-        // RecyclerView and Adapter
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.dogImagesFragmentList.adapter =
-            DogImagesAdapter()
-
+        setMainActivityTitle(dogBreed.breedName)
+        setViewModel()
+        setRecyclerViewAndAdapter()
         return binding.root
+    }
+
+    private fun setViewModel() {
+        viewModelFactory = DogImagesViewModelFactory(dogBreed, DI.repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(DogImagesViewModel::class.java)
+        binding.dogImagesViewModel = viewModel
+    }
+
+    private fun setRecyclerViewAndAdapter() {
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.dogImagesFragmentList.adapter = DogImagesAdapter()
     }
 }
