@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="dogBreedImagesViewModel"
-            type="com.example.chipdogshowcase.dogbreedimages.DogBreedImagesViewModel" />
+            name="dogImagesViewModel"
+            type="com.example.chipdogshowcase.dogimages.DogImagesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,13 +15,13 @@
         android:layout_height="match_parent"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        tools:context=".dogbreedimages.DogBreedImagesFragment">
+        tools:context=".dogimages.DogImagesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/dog_breed_images_fragment_list"
+            android:id="@+id/dog_images_fragment_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:imageListData="@{dogBreedImagesViewModel.images}"
+            app:imageListData="@{dogImagesViewModel.images}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -29,11 +29,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/dog_breed_images_fragment_status_image"
+            android:id="@+id/dog_images_fragment_status_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/statusImageDescription"
-            app:dogApiStatus="@{dogBreedImagesViewModel.status}"
+            app:dogApiStatus="@{dogImagesViewModel.status}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.chipdogshowcase.dogbreedimages.DogBreedImagesAdapter
+import com.example.chipdogshowcase.dogimages.DogImagesAdapter
 import com.example.chipdogshowcase.dogbreeds.DogBreedsAdapter
 import com.example.chipdogshowcase.network.DogApiStatus
 
@@ -27,7 +27,7 @@ fun bindDogBreedRecyclerView(recyclerView: RecyclerView, data: List<DogBreed>?) 
 // Init DogBreedImagesAdapter with list of image URL strings
 @BindingAdapter("imageListData")
 fun bindDogBreedImageRecyclerView(recyclerView: RecyclerView, data: List<String>?) {
-    val adapter = recyclerView.adapter as DogBreedImagesAdapter
+    val adapter = recyclerView.adapter as DogImagesAdapter
     adapter.submitList(data)
 }
 

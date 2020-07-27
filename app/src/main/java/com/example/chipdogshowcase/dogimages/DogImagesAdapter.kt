@@ -1,30 +1,27 @@
-package com.example.chipdogshowcase.dogbreedimages
+package com.example.chipdogshowcase.dogimages
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chipdogshowcase.databinding.DogBreedImageItemViewBinding
+import com.example.chipdogshowcase.databinding.DogImageItemViewBinding
 
-class DogBreedImagesAdapter :
-    ListAdapter<String, DogBreedImagesAdapter.ViewHolder>(
-        DogBreedImagesDiffCallback()
-    ) {
+class DogImagesAdapter : ListAdapter<String, DogImagesAdapter.ViewHolder>(DogImagesDiffCallback()) {
 
-    class ViewHolder private constructor(private val binding: DogBreedImageItemViewBinding) :
+    class ViewHolder private constructor(private val binding: DogImageItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String, position: Int) {
-            binding.dog = item
+            binding.dogImageUrl = item
             val imageTitle = "Pup photo ${position + 1}"
-            binding.dogBreedImageItemViewTextview.text = imageTitle
+            binding.dogImageItemViewTextview.text = imageTitle
             binding.executePendingBindings()
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = DogBreedImageItemViewBinding.inflate(layoutInflater, parent, false)
+                val binding = DogImageItemViewBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(
                     binding
                 )
@@ -44,7 +41,7 @@ class DogBreedImagesAdapter :
     }
 }
 
-class DogBreedImagesDiffCallback : DiffUtil.ItemCallback<String>() {
+class DogImagesDiffCallback : DiffUtil.ItemCallback<String>() {
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }

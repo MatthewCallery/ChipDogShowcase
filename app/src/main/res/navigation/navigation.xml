@@ -11,11 +11,11 @@
         tools:layout="@layout/fragment_dog_breeds">
         <action
             android:id="@+id/action_dogBreedsFragment_to_dogBreedImagesFragment"
-            app:destination="@id/dogBreedImagesFragment" />
+            app:destination="@id/dogImagesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/dogBreedImagesFragment"
-        android:name="com.example.chipdogshowcase.dogbreedimages.DogBreedImagesFragment">
+        android:id="@+id/dogImagesFragment"
+        android:name="com.example.chipdogshowcase.dogimages.DogImagesFragment">
         <argument
             android:name="selectedProperty"
             app:argType="com.example.chipdogshowcase.DogBreed" />

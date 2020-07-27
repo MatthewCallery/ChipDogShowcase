@@ -1,4 +1,4 @@
-package com.example.chipdogshowcase.dogbreedimages
+package com.example.chipdogshowcase.dogimages
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class DogBreedImagesViewModel(private var breed: DogBreed, private var repository: Repository) : ViewModel() {
+class DogImagesViewModel(private var breed: DogBreed, private var repository: Repository) : ViewModel() {
     private val _images = MutableLiveData<List<String>>()
     val images: LiveData<List<String>>
         get() = _images
