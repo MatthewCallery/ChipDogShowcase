@@ -21,9 +21,3 @@ interface DogApiService {
     suspend fun getDogImagesAsync(@Path("breed_name", encoded = true) name: String):
             String
 }
-
-object DogApi {
-    val retrofitService: DogApiService by lazy {
-        retrofit.create(DogApiService::class.java)
-    }
-}
