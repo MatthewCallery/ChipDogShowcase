@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.chipdogshowcase.*
 import com.example.chipdogshowcase.databinding.FragmentDogBreedsBinding
+import com.example.chipdogshowcase.utilities.setMainActivityTitle
 
 class DogBreedsFragment : Fragment() {
     private lateinit var binding: FragmentDogBreedsBinding
