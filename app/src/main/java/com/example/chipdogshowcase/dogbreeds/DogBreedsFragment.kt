@@ -17,44 +17,39 @@ class DogBreedsFragment : Fragment() {
     private lateinit var viewModel: DogBreedsViewModel
     private lateinit var viewModelFactory: DogBreedsViewModelFactory
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_dog_breeds, container, false)
-        // Set app bar title
-        (requireActivity() as MainActivity).title = getString(
-            R.string.titleDogBreedsFragment
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_breeds, container, false)
+        setMainActivityTitle(getString(R.string.titleDogBreedsFragment))
+        setViewModel()
+        setRecyclerViewAndAdapter()
+        setNavigationObserver()
+        return binding.root
+    }
 
-        // ViewModel
-        viewModelFactory =
-            DogBreedsViewModelFactory(DI.repository)
+    private fun setViewModel() {
+        viewModelFactory = DogBreedsViewModelFactory(DI.repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DogBreedsViewModel::class.java)
         binding.dogBreedsViewModel = viewModel
+    }
 
-        // RecyclerView and Adapter
+    private fun setRecyclerViewAndAdapter() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.dogBreedsFragmentList.adapter =
             DogBreedsAdapter(
                 DogBreedsAdapter.OnClickListener {
                     viewModel.displayDogBreedImages(it)
-                })
+                }
+            )
+    }
 
-        // Navigation
+    private fun setNavigationObserver() {
         viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
-            if ( null != it ) {
+            if (null != it) {
                 this.findNavController().navigate(
-                    DogBreedsFragmentDirections.actionDogBreedsFragmentToDogBreedImagesFragment(
-                        it
-                    )
+                    DogBreedsFragmentDirections.actionDogBreedsFragmentToDogImagesFragment(it)
                 )
                 viewModel.displayDogBreedImagesComplete()
             }
         })
-
-        return binding.root
     }
 }

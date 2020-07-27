@@ -10,7 +10,7 @@
         android:name="com.example.chipdogshowcase.dogbreeds.DogBreedsFragment"
         tools:layout="@layout/fragment_dog_breeds">
         <action
-            android:id="@+id/action_dogBreedsFragment_to_dogBreedImagesFragment"
+            android:id="@+id/action_dogBreedsFragment_to_dogImagesFragment"
             app:destination="@id/dogImagesFragment" />
     </fragment>
     <fragment
