@@ -31,14 +31,6 @@ class DogBreedsViewModel(private val repository: Repository) : ViewModel() {
         refreshDogBreedDataFromRepository()
     }
 
-    fun displayDogBreedImages(dogBreed: DogBreed) {
-        _navigateToSelectedProperty.value = dogBreed
-    }
-
-    fun displayDogBreedImagesComplete() {
-        _navigateToSelectedProperty.value = null
-    }
-
     private fun refreshDogBreedDataFromRepository() {
         coroutineScope.launch {
             try {
@@ -53,6 +45,14 @@ class DogBreedsViewModel(private val repository: Repository) : ViewModel() {
                 }
             }
         }
+    }
+
+    fun displayDogBreedImages(dogBreed: DogBreed) {
+        _navigateToSelectedProperty.value = dogBreed
+    }
+
+    fun displayDogBreedImagesComplete() {
+        _navigateToSelectedProperty.value = null
     }
 
     override fun onCleared() {
