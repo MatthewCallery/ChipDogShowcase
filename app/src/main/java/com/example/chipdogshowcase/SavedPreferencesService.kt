@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 class SavedPreferencesService(private val context: Context) : LiveData<List<DogBreed>>() {
     private lateinit var sharedPreferences: SharedPreferences
 
-    private val preferenceChangeListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+    private val preferenceChangeListener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
         value = getValueFromPreferences()
     }
 
